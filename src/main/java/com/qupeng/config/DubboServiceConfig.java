@@ -19,6 +19,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
@@ -33,6 +34,7 @@ import javax.sql.DataSource;
 @EnableDubbo(scanBasePackages = {"com.qupeng.service"}) //扫描dubbo的service注解
 @ComponentScan(basePackages = {"com.qupeng.service"}) //扫描spring的service注解
 @MapperScan(basePackages = {"com.qupeng.mybatis.mapper"}) //扫描Mapper接口-->MapperFacrotyBean
+@EnableTransactionManagement //相当于原来spring.xml中的 <tx:annotation-driven transaction-manager="transactionManager"/>
 public class DubboServiceConfig {
     @Value("${jdbc.username}")
     private String user;
